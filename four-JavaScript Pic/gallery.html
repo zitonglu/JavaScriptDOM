@@ -12,6 +12,14 @@
 	<li><a href="images/3.jpg">jpg3</a></li>
 	<li><a href="images/4.jpg">jpg4</a></li>
 </ul>
+<img src="images/none.jpg" alt="nonePic" id="placeholder">
+<script type="text/javascript">
+	function changePic() {
+		var ObjectHref=getAttribute("href");
+		var placeholder=getElementById("placeholder");
+		placeholder.setAttribute("src",ObjectHref);
+	}
+</script>
 	
 </body>
 </html>
