@@ -10,22 +10,23 @@
 		var ObjectHref=whichpic.getAttribute("href");
 		var placeholder=document.getElementById("placeholder");
 		placeholder.setAttribute("src",ObjectHref);
+		urlHref=document.getElementById("urlHref");
+		urlHref.childNodes[0].nodeValue=ObjectHref;
 		// var some =document.getAttribute("href");错误
 	}
 </script>
 <h1>Snpshots</h1>
 <ul>
-	<li><a href="images/1.jpg" onmousemove="changePic(this); return false;">jpg1</a></li>
+	<li><a href="images/1.jpg" onclick="changePic(this); return false;">jpg1</a></li>
 	<li><a href="images/2.jpg" onclick="changePic(this); return false;">jpg2</a></li>
-	<li><a href="images/9.jpg" onclick="changePic(this); return false;">jpg3</a></li>
-	<li><a href="images/4.jpg" onmouseout="changePic(this); return false;">jpg4</a></li>
-	<li><a href="images/3.jpg" onclick="return true;">jpg5</a></li>
+	<li><a href="images/3.jpg" onclick="changePic(this); return false;">jpg3</a></li>
+	<li><a href="images/4.jpg" onclick="changePic(this); return false;">jpg4</a></li>
 </ul>
 <img src="images/none.jpg" alt="nonePic" id="placeholder">
+<p id="urlHref">图片地址</p>
 <script type="text/javascript">
 	function countNodes() {
 		var test=document.getElementsByTagName('ul')[0];
-		alert(test.childNodes.length);
 	}
 	window.onload=countNodes;
 </script>
