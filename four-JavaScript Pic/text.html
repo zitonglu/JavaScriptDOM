@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<p title="titleName" id="id">这不是属性</p>
+<script type="text/javascript">
+	var test1=document.getElementById("id");
+	alert(test1.getAttribute("title"));
+	test1.setAttribute("title","changeName");
+	alert(test1.getAttribute("title"));
+</script>
+	
+</body>
+</html>
