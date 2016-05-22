@@ -22,7 +22,13 @@
 	<li><a href="images/3.jpg" onclick="return true;">jpg5</a></li>
 </ul>
 <img src="images/none.jpg" alt="nonePic" id="placeholder">
-
+<script type="text/javascript">
+	function countNodes() {
+		var test=document.getElementsByTagName('ul')[0];
+		alert(test.childNodes.length);
+	}
+	window.onload=countNodes;
+</script>
 	
 </body>
 </html>
