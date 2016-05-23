@@ -34,6 +34,7 @@
 <script>
 	window.onload=javascriptL;
 	function javascriptL() {
+		if (!getElementById) return false;
 		var some=document.getElementById('fangdang');
 		var viewImg=document.getElementById('placeholder');
 		some.onclick=function() {
@@ -42,6 +43,5 @@
 			}
 	}
 </script>
-	
 </body>
 </html>
