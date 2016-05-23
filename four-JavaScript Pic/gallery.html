@@ -21,6 +21,7 @@
 	<li><a href="images/2.jpg" onclick="changePic(this); return false;">jpg2</a></li>
 	<li><a href="images/3.jpg" onclick="changePic(this); return false;">jpg3</a></li>
 	<li><a href="images/4.jpg" onclick="changePic(this); return false;">jpg4</a></li>
+	<li><a href="images/1.jpg" id='fangdang'>javascript脱离</a></li>
 </ul>
 <img src="images/none.jpg" alt="nonePic" id="placeholder">
 <p id="urlHref">图片地址</p>
@@ -29,6 +30,17 @@
 		var test=document.getElementsByTagName('ul')[0];
 	}
 	window.onload=countNodes;
+</script>
+<script>
+	window.onload=javascriptL;
+	function javascriptL() {
+		var some=document.getElementById('fangdang');
+		var viewImg=document.getElementById('placeholder');
+		some.onclick=function() {
+			viewImg.setAttribute('src', some.getAttribute('href'));
+			return false;
+			}
+	}
 </script>
 	
 </body>
