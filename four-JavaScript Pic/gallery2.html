@@ -34,8 +34,9 @@
 		var links = gallery.getElementsByTagName('a');
 		for (var i = links.length - 1; i >= 0; i--) {
 			links[i].onclick=function () {
-				return !changePic(this);
+				return changePic(this)? false : true;
 			}
+			// links[i].onkeypress=links[i].onclick;未成功
 		}
 	}
 	window.onload=function () {
