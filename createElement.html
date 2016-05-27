@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="box"></div>
+	<script type="text/javascript">
+	window.onload = function () {
+		var createP = document.createElement('p');
+		var box =document.getElementById('box');
+		box.appendChild(createP);
+		var Ptext = document.createTextNode("hello word!");
+		createP.appendChild(Ptext);//appendchild后面的值不用引号
+	}
+	</script>
+</body>
+</html>
