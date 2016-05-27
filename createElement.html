@@ -11,8 +11,14 @@
 		var createP = document.createElement('p');
 		var box =document.getElementById('box');
 		box.appendChild(createP);
-		var Ptext = document.createTextNode("hello word!");
-		createP.appendChild(Ptext);//appendchild后面的值不用引号
+		var Ptext1 = document.createTextNode("This is ");
+		createP.appendChild(Ptext1);
+		var createEm =document.createElement('em');
+		var createEmText =document.createTextNode('my');
+		createEm.appendChild(createEmText);
+		createP.appendChild(createEm);
+		var Ptext3 =document.createTextNode(" content.");
+		createP.appendChild(Ptext3);
 	}
 	</script>
 </body>
