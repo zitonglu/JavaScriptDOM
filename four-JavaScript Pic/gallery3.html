@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Image Gallery</title>
+</head>
+<body>
+<h1>Snpshots</h1>
+<ul id="imagesgallery">
+	<li><a href="images/1.jpg" onclick="changePic(this); return false;">jpg1</a></li>
+	<li><a href="images/2.jpg" onclick="changePic(this); return false;">jpg2</a></li>
+	<li><a href="images/3.jpg" onclick="changePic(this); return false;">jpg3</a></li>
+	<li><a href="images/4.jpg" onclick="changePic(this); return false;">jpg4</a></li>
+</ul>
+<!-- <img src="images/none.jpg" alt="nonePic" id="placeholder">
+<p id="urlHref">图片地址</p> -->
+<script type="text/javascript">
+	function inImgAndP() {
+		var createImg=document.createElement('img');
+		createImg.setAttribute('src', 'images/none.jpg');
+		createImg.setAttribute('alt', 'nongpic');
+		createImg.setAttribute('id', 'placeholder');
+		createP=document.createElement('p');
+		createP.setAttribute('id', 'urlHref');
+		var createPText = document.createTextNode("img url");
+		createP.appendChild(createPText);
+		document.getElementsByTagName('body')[0].appendChild(createImg);
+		document.getElementsByTagName('body')[0].appendChild(createP);//appengchild不加引号
+	}
+	function changePic(whichpic) {
+		var ObjectHref=whichpic.getAttribute("href");
+		if (!document.getElementById('placeholder')) return false;
+		var placeholder=document.getElementById("placeholder");
+		placeholder.setAttribute("src",ObjectHref);
+		if (document.getElementById('urlHref')) {			
+			urlHref=document.getElementById("urlHref");
+			urlHref.childNodes[0].nodeValue=ObjectHref;
+		}
+		return false;
+	}
+	function function_name() {
+		if (!document.getElementById) return false;
+		if (!document.getElementById("imagesgallery")) return false;
+		if (!document.getElementsByTagName) return false;
+		var gallery = document.getElementById('imagesgallery');
+		var links = gallery.getElementsByTagName('a');
+		for (var i = links.length - 1; i >= 0; i--) {
+			links[i].onclick=function () {
+				return changePic(this)? false : true;
+			}
+			// links[i].onkeypress=links[i].onclick;未成功
+		}
+	}
+	window.onload=function () {
+		inImgAndP();
+		changePic();
+		function_name();
+	}
+	// function addLoadEvent(func){
+	// 	var oldonload = window.onload;
+	// 	if (typeof window.onload != 'function') {
+	// 		window.onload=func;
+	// 	}else{
+	// 		window.onload=function () {
+	// 			oldonload();
+	// 			func();
+	// 		}
+	// 	}
+	// }
+
+</script>
+</body>
+</html>
