@@ -25,7 +25,7 @@
 		var createPText = document.createTextNode("img url");
 		createP.appendChild(createPText);
 		document.getElementsByTagName('body')[0].appendChild(createImg);
-		document.getElementsByTagName('body')[0].appendChild(createP);//appengchild不加引号
+		insertAffter(createP,createImg);
 	}
 	function changePic(whichpic) {
 		var ObjectHref=whichpic.getAttribute("href");
@@ -51,7 +51,15 @@
 			// links[i].onkeypress=links[i].onclick;未成功
 		}
 	}
-	window.onload=function () {
+	function insertAffter(newElement,targetElement) {
+		var parent=targetElement.parentNode;
+		if (parent.lastchild==targetElement) {
+			parent.appendChild(newElement);
+		}else{
+			parent.insertBefore(newElement,targetElement.nextSibling);
+		}
+	}
+	window.onload=function () {	
 		inImgAndP();
 		changePic();
 		function_name();
@@ -67,7 +75,6 @@
 	// 		}
 	// 	}
 	// }
-
 </script>
 </body>
 </html>
