@@ -20,5 +20,60 @@
 	<p>The <abbr title="World Wide Web Consortium">W3C</abbr> defines the <abbr title="Document Object Model">DOM</abbr> as:</p>
 	<blockquote cite="http://www.w3.org/DOM/"><p>A platform- and language-neutral interface that will allow programs and script to dynamically access and update the content, struture and style of docunments.</p></blockquote>
 	<p>It is an <abbr title="Application Programming Interface">API</abbr> tha can be used to navigate <abbr title="HyperText Markup language">HTML</abbr> and <abbr title="eXtensible Markup Language">XML</abbr> documents.</p>
+	<script type="text/javascript">
+		function displayAbbreviations() {
+			if (!document.getElementsByTagName) return false;
+			if(!document.createElement) return false;
+			if(!document.createTextNode) return false;
+			//取得所有缩略词
+			var abbreviaions=document.getElementsByTagName("abbr");
+			if (abbreviaions.length<1) return false;
+			var defs=new Array();
+			//游历这些缩略词
+			for (var i = abbreviaions.length - 1; i >= 0; i--) {
+				var current_abbr=abbreviaions[i];
+				var definition = current_abbr.getAttribute('title');
+				var key = current_abbr.lastChild.nodeValue;
+				defs[key] = definition;
+			}
+			//创建定义列表
+			var dlist=document.createElement('dl');
+			//游历定义
+			for(key in defs){
+				var definition=defs[key];
+				//创建定义标题
+				var dtitle=document.createElement('dt');
+				var dtitle_text=document.createTextNode(key);
+				dtitle.appendChild(dtitle_text);
+				//创建定义表述
+				var ddesc=document.createElement('dd');
+				var ddesc_text=document.createTextNode(definition);
+				ddesc.appendChild(ddesc_text);
+				//把它们增加给定义列表
+				dlist.appendChild(dtitle);
+				dlist.appendChild(ddesc);
+			}
+			//创建副标题
+			var header=document.createElement('h2');
+			var header_text=document.createTextNode('abbreviaions');
+			header.appendChild(header_text);
+			//把标题增加到页面主体
+			document.body.appendChild(header);
+			//把定义列表增加到页面主体
+			document.body.appendChild(dlist);
+		}
+		function addLoadEvent(func){
+			var oldonload = window.onload;
+			if (typeof window.onload != 'function') {
+				window.onload=func;
+			}else{
+				window.onload=function () {
+					oldonload();
+					func();
+				}
+			}
+		}
+		addLoadEvent(displayAbbreviations);
+	</script>
 </body>
 </html>
