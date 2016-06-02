@@ -32,6 +32,7 @@
 			//游历这些缩略词
 			for (var i = abbreviaions.length - 1; i >= 0; i--) {
 				var current_abbr=abbreviaions[i];
+				if (current_abbr.childNodes.length <1 ) content;//如果没有子集就跳出
 				var definition = current_abbr.getAttribute('title');
 				var key = current_abbr.lastChild.nodeValue;
 				defs[key] = definition;
@@ -53,6 +54,7 @@
 				dlist.appendChild(dtitle);
 				dlist.appendChild(ddesc);
 			}
+			if (dlist.childNodes.length <1 ) return false;
 			//创建副标题
 			var header=document.createElement('h2');
 			var header_text=document.createTextNode('abbreviaions');
