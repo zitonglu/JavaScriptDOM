@@ -64,6 +64,25 @@
 			//把定义列表增加到页面主体
 			document.body.appendChild(dlist);
 		}
+		function displayCitations() {
+			if (!document.getElementsByTagName) return false;
+			if(!document.createElement) return false;
+			if(!document.createTextNode) return false;
+			var quotes = document.getElementsByTagName('blockquote');
+			for (var i = quotes.length - 1; i >= 0; i--) {
+				if (!quotes[i].getAttribute('cite')) content;//如果cite没有值就跳出
+				var url = quotes[i].getAttribute('cite');
+				var quotesChildren = quotes[i].getElementsByTagName('*');
+				var elem = quotes[quotesChildren.length-1];//取得引用中最后一个元素节点
+				var link =document.createElement('a');
+				var link_text =document.createTextNode("source");
+				link.appendChild(link_text);
+				link.setAttribute('href', url);//<a href="http://www.w3.org/DOM/">source</a>
+				var superscript=document.createElement('sup');
+				superscript.appendChild(link);//<sup><a href="http://www.w3.org/DOM/">source</a></sup>
+				elem.appendChild(superscript);
+			}
+		}
 		function addLoadEvent(func){
 			var oldonload = window.onload;
 			if (typeof window.onload != 'function') {
@@ -76,6 +95,7 @@
 			}
 		}
 		addLoadEvent(displayAbbreviations);
+		addLoadEvent(displayCitations);
 	</script>
 </body>
 </html>
