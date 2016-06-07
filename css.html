@@ -3,14 +3,37 @@
 <head>
 	<meta charset="UTF-8">
 	<title>css</title>
+	<style type="text/css">
+		p#example{
+			color:grey;
+			font-family:'arial',sans-serif
+		}
+	</style>
 <script type="text/javascript">
 	window.onload=function () {
-		var para=document.getElementById('example');
-		alert(para.style.fontFamily);
+		var header=document.getElementsByTagName('h1');
+		var elem;
+		for (var i = header.length - 1; i >= 0; i--) {
+			elem=getNextElment(header[i].nextsibling);
+			elem.style.fontWeight='blod';
+			elem.style.fontSiz='1.3em';
+		}
+		function getNextElment(node) {
+			if (node.nodeType==1) {
+				return node;
+			}
+			if (node.nextSibling){
+				return getNextElment(node.nextSibling);
+			}
+			return null;
+		}
 	}
 </script>
 </head>
 <body>
-	<p id="example" style="color:grey;font-family:'arial',sans-serif">An example of a paragraph.</p>
+	<h1>text more</h1>
+	<p id="example">An example of a paragraph.</p>
+	<h1>oieg</h1>
+	<p>sjgsk sdfel ksog</p>
 </body>
 </html>
