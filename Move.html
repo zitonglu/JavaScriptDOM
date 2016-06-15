@@ -4,36 +4,27 @@
 	<meta charset="UTF-8">
 	<title>移动</title>
 </head>
-<style type="text/css">
-	body{
-		font-family: "helvetica";
-		font-size: 10pt;
-	}
-	abbr{
-		text-decoration: none;
-		border:0;
-		font-style: normal;
-	}
-</style>
 <body>
 <p id="message">where</p>
 	<script type="text/javascript">
-	// function positionMessage() {
-	// 	if (!document.getElementById ) return false;
-	// 	if (!document.getElementById('message')) return false;
-	// 	var elem=document.getElementById('message');
-	// 	elem.style.position="absolute";
-	// 	elem.style.left="50px";
-	// 	elem.style.top="100px";
-	// 	movement=setTimeout("moveMessage()", 5000);
-	// }
+	function positionMessage() {
+		if (!document.getElementById) return false;
+		if (!document.getElementById('message')) return false;
+		var elem=document.getElementById('message');
+		elem.style.position="absolute";
+		elem.style.left="50px";
+		elem.style.top="200px";
+		// movement=setTimeout("moveMessage()", 5000);
+	}
 	function moveMessage() {
-		if (!document.getElementById ) return false;
+		if (!document.getElementById) return false;
 		if (!document.getElementById('message')) return false;
 		var elem=document.getElementById('message');
 		var xpos=parseInt(elem.style.left);
 		var ypos=parseInt(elem.style.top);
-		if (xpos==200 && ypos ==100) return false;
+		if (xpos==200 && ypos ==100){
+			return false;
+		}
 		if (xpos < 200) {
 			xpos++;
 		}
@@ -61,6 +52,7 @@
 				}
 			}
 		}
+		addLoadEvent(positionMessage);
 		addLoadEvent(moveMessage);
 	</script>
 </body>
