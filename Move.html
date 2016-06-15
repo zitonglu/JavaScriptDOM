@@ -7,6 +7,32 @@
 <body>
 <p id="message">where</p>
 	<script type="text/javascript">
+	function moveMessage(elementId,final_x,final_y,interval) {
+		if (!document.getElementById) return false;
+		if (!document.getElementById(elementId)) return false;
+		var elem=document.getElementById(elementId);
+		var xpos=parseInt(elem.style.left);
+		var ypos=parseInt(elem.style.top);
+		if (xpos==final_x && ypos ==final_y){
+			return false;
+		}
+		if (xpos < final_x) {
+			xpos++;
+		}
+		if (xpos > final_x) {
+			xpos--;
+		}
+		if (ypos < final_y) {
+			ypos++;
+		}
+		if (ypos > final_y) {
+			ypos--;
+		}
+		elem.style.left=xpos+"px";
+		elem.style.top=ypos+"px";
+		var repeat="moveMessage('"+elementId+"',"+final_x+","+final_y+","+interval+")";
+		movement=setTimeout(repeat,interval);
+	}
 	function positionMessage() {
 		if (!document.getElementById) return false;
 		if (!document.getElementById('message')) return false;
@@ -14,32 +40,7 @@
 		elem.style.position="absolute";
 		elem.style.left="50px";
 		elem.style.top="200px";
-		// movement=setTimeout("moveMessage()", 5000);
-	}
-	function moveMessage() {
-		if (!document.getElementById) return false;
-		if (!document.getElementById('message')) return false;
-		var elem=document.getElementById('message');
-		var xpos=parseInt(elem.style.left);
-		var ypos=parseInt(elem.style.top);
-		if (xpos==200 && ypos ==100){
-			return false;
-		}
-		if (xpos < 200) {
-			xpos++;
-		}
-		if (xpos > 200) {
-			xpos--;
-		}
-		if (ypos < 100) {
-			ypos++;
-		}
-		if (ypos > 100) {
-			ypos--;
-		}
-		elem.style.left=xpos+"px";
-		elem.style.top=ypos+"px";
-		movement=setTimeout("moveMessage()", 10);
+		moveMessage("message",600,900,12);
 	}
 		function addLoadEvent(func){
 			var oldonload = window.onload;
