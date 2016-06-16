@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>list</title>
+</head>
+<style type="text/css">
+	#slideshow{
+		width: 300px;
+		height: 500px;
+		position: relative;
+		overflow: hidden;
+	}
+</style>
+<body>
+<h1>Web design</h1>
+<p>These are the things you should konw.</p>
+<ol id="linklist">
+	<li><a href="strcture.html">strcture</a></li>
+	<li><a href="presentation.html">presentation</a></li>
+	<li><a href="behavior.html">behavior</a></li>
+</ol>
+<div id="slideshow">
+	<img src="four-JavaScript Pic/images/1.jpg" id="preview" />
+</div>
+	<script type="text/javascript">
+	function moveElement(elementId,final_x,final_y,interval) {
+		if (!document.getElementById) return false;
+		if (!document.getElementById(elementId)) return false;
+		var elem=document.getElementById(elementId);
+		var xpos=parseInt(elem.style.left);
+		var ypos=parseInt(elem.style.top);
+		if (xpos==final_x && ypos ==final_y){
+			return false;
+		}
+		if (xpos < final_x) {
+			xpos++;
+		}
+		if (xpos > final_x) {
+			xpos--;
+		}
+		if (ypos < final_y) {
+			ypos++;
+		}
+		if (ypos > final_y) {
+			ypos--;
+		}
+		elem.style.left=xpos+"px";
+		elem.style.top=ypos+"px";
+		var repeat="moveMessage('"+elementId+"',"+final_x+","+final_y+","+interval+")";
+		movement=setTimeout(repeat,interval);
+	}
+	function prepareslideshow() {
+		if (!document.getElementsByTagName) return false;
+		if (!document.getElementById) return false;
+		if (!document.getElementById('linklist')) return false;
+		if (!document.getElementById('preview')) return false;
+		// 判断完成，为图片应用式样
+		var preview=document.getElementById('preview');
+		preview.style.position="absolute";
+		preview.style.left="0px";
+		preview.style.top="0px";
+		// 获取所有链接
+		var list=document.getElementById('linklist');
+		var links=list.getElementsByTagName('a');
+		// 为moustover事件增加动画效果
+		// for (var i = links.length - 1; i >= 0; i--) {
+		// 	links[i].onmouseover=function(){
+		// 		x=i+1;
+		// 		moveElement("preview",-100*x,0,10);
+		// 	}
+		// }
+		links[0].onmouseover=function () {
+			moveElement("preview",-300,0,10);
+		}
+		links[1].onmouseover=function () {
+			moveElement("preview",-600,0,10);
+		}
+		links[2].onmouseover=function () {
+			moveElement("preview",-900,0,10);
+		}
+	}
+		function addLoadEvent(func){
+			var oldonload = window.onload;
+			if (typeof window.onload != 'function') {
+				window.onload=func;
+			}else{
+				window.onload=function () {
+					oldonload();
+					func();
+				}
+			}
+		}
+		addLoadEvent(moveElement);
+		addLoadEvent(prepareslideshow);
+	</script>
+</body>
+</html>
