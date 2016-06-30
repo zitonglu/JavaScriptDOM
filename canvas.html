@@ -5,9 +5,10 @@
 	<title>Canvas</title>
 </head>
 <body style="background-color: rgb(102, 255, 221);">
-	<canvas id="draw-in-me" width="120" height="40">
+	<canvas id="draw-in-me" width="120" height="40" >
 		<p>Powerd by HTML canvas</p>
 	</canvas>
+	<img src="four-JavaScript Pic\images\1.jpg" alt="">
 	<script>
 		window.onload=function darw() {
 			var canvas=document.getElementById('draw-in-me');
@@ -29,7 +30,44 @@
 				ctx.strokeStyle="rgb(255,255,255)";
 				ctx.stroke();
 			}
-			
+		}
+		// 下面代码未成功
+		function converToGS(img) {
+			// 存储原始的彩色板
+			img.color=img.src;
+			// 创建灰度板
+			img.grayscale=createGSCanvass(img);
+			// 在鼠标移进移出的时候切换图片
+			img.onmouseover=function () {
+				this.src=this.color;
+			}
+			img.onmouseout=function () {
+				this.src=this.grayscale;
+			}
+			img.onmouseout();
+		}
+		function createGSCanvass(img) {
+			var canvas=document.createElement('canvas');
+			canvas.width=img.width;
+			canvas.height=img.height;
+			var ctx=canvas.getContext('2d');
+			ctx.drawimage(img,0,0);
+			// getImageData只操作与脚本同一域中的图片
+			var c=ctx.getImageData(0,0,img,width,img.height);
+			for (var i = 0; i < c.height.length; i++) {
+				for (var j = 0; j < c.width; j++) {
+					var x=(i*4)*c.height+(j*4);
+					var r=c.data[x];
+					var g=c.data[x+1];
+					var b=c.data[x+2];
+					c.data[x]=c.data[x+1]=c.data[x+2]=(r+g+b)/3;
+				}
+			}
+			ctx.putImageData(c,0,0,0,0,c.width,c.height);
+			return canvas.toDataURl();
+		}
+		window.onload=function () {
+			converToGS(document.getElementById('avatar'));
 		}
 	</script>
 </body>
