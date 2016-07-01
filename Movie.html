@@ -51,13 +51,13 @@
 			play.innerHTML='&#x2590;&#x2590;';
 			play.setAttribute('paused', true);
 		},false);
-		vid.addEventListener('paused', function() {
+		vid.addEventListener('pause', function() {
 			play.removeAttribute('paused');			
 			play.innerHTML='&#x25BA';
 		},false);
 
 		vid.addEventListener('ended', function() {
-			vid.pause();
+			vid.pause ();
 		},false);
 	}
 
