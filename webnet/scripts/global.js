@@ -110,6 +110,11 @@ function prepareSlideshow() {
 	var intro=document.getElementById('intro');
 	var slideshow=document.createElement('div');
 	slideshow.setAttribute('id', 'slideshow');
+	var frame=document.createElement('img');
+	frame.setAttribute('src', 'images/frame.gif');
+	frame.setAttribute('alt', '');
+	frame.setAttribute('id', 'frame');
+	slideshow.appendChild(frame);
 	var preview=document.createElement('img');
 	preview.setAttribute('src', 'images/slideshow.png');
 	preview.setAttribute('alt', 'a alt');
@@ -117,7 +122,7 @@ function prepareSlideshow() {
 	slideshow.appendChild(preview);
 	insertAfter(slideshow,intro);
 	// 下面开始循环intro，并根据链接来移动preview
-	var links=intro.getElementsByTagName('a');
+	var links=document.getElementsByTagName('a');
 	var destination;
 	for (var i = 0; i < links.length; i++) {
 		links[i].onmouseover=function () {
