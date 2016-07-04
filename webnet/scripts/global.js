@@ -147,6 +147,7 @@ function prepareSlideshow() {
 }
 addLoadEvent(prepareSlideshow);
 
+// 显示section的函数
 // about页面显示选中section的函数
 function showSection(id) {
 	var sections=document.getElementsByTagName('section');
@@ -158,6 +159,8 @@ function showSection(id) {
 		}		
 	}
 }
+// 鼠标点击显示函数
+// 全部隐藏，点击显示对应的
 function preareInternalnav() {
 	if (!document.getElementsByTagName) return false;
 	if (!document.getElementById) return false;
