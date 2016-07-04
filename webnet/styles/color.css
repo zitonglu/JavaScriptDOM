@@ -28,6 +28,13 @@ header nav{
 	background-color: #789;
 	border-color: #667;
 }
+header nav a.here:link,
+header nav a.here:visited,
+header nav a.here:hover,
+header nav a.here:active{
+	color: #eef;
+	background-color: #799;
+}
 article{
 	color: #223;
 	background-color: #edc;
