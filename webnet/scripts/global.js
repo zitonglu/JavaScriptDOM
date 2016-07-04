@@ -101,3 +101,43 @@ function moveElement(elementId,final_x,final_y,interval) {
 	var repeat="moveElement('"+elementId+"',"+final_x+","+final_y+","+interval+")";
 	elem.movement=setTimeout(repeat,interval);
 }
+// 幻灯片函数
+// 在#intro的元素后面增加一个幻灯片，由鼠标移动到哪儿决定图片位置
+function prepareSlideshow() {
+	if (!document.getElementsByTagName) return false;
+	if (!document.getElementById) return false;
+	if (!document.getElementById('intro')) return false;
+	var intro=document.getElementById('intro');
+	var slideshow=document.createElement('div');
+	slideshow.setAttribute('id', 'slideshow');
+	var preview=document.createElement('img');
+	preview.setAttribute('src', 'images/slideshow.png');
+	preview.setAttribute('alt', 'a alt');
+	preview.setAttribute('id', 'preview');
+	slideshow.appendChild(preview);
+	insertAfter(slideshow,intro);
+	// 下面开始循环intro，并根据链接来移动preview
+	var links=intro.getElementsByTagName('a');
+	var destination;
+	for (var i = 0; i < links.length; i++) {
+		links[i].onmouseover=function () {
+			destination=this.getAttribute('href');
+			if (destination.indexOf('index.html')!=-1) {
+				moveElement('preview',0,0,5);
+			}
+			if (destination.indexOf('about.html')!=-1) {
+				moveElement('preview',-150,0,5);
+			}
+			if (destination.indexOf('photos.html')!=-1) {
+				moveElement('preview',-300,0,5);
+			}
+			if (destination.indexOf('live.html')!=-1) {
+				moveElement('preview',-450,0,5);
+			}
+			if (destination.indexOf('contact.html')!=-1) {
+				moveElement('preview',-600,0,5);
+			}
+		}
+	}
+}
+addLoadEvent(prepareSlideshow);
