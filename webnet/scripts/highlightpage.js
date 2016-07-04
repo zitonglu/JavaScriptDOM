@@ -12,6 +12,8 @@ function highlightPage() {
 		// 如果网址里面包含了链接地址，则增加
 		if (window.location.href.indexOf(linkurl)!=-1) {
 			links[i].className="here";
+			var linktext=links[i].lastChild.nodeValue.toLowerCase();
+			document.body.setAttribute('id', linktext);
 		}
 	}
 }
