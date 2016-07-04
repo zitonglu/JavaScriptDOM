@@ -21,6 +21,18 @@ header{
 	border-style: solid;
 	border-bottom-width: 0;
 }
+#about header{
+	background-image: url(../images/lineup.png);
+}
+#photos header{
+	background-image: url(../images/basshead.png);
+}
+#live header{
+	background-image: url(../images/bassist.png);
+}
+#contact header{
+	background-image: url(../images/drummer.png);
+}
 header nav{
 	background-image: url(../images/navbar.gif);
 	background-position: bottom left;
