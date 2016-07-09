@@ -306,3 +306,49 @@ function displayAbbreviations() {
 addLoadEvent(stripeTables);
 addLoadEvent(highlightRows);
 addLoadEvent(displayAbbreviations);
+
+// 下面三段是未测试函数
+function focusLabels() {
+	if (!document.getElementsByTagName) return false;
+	var labels=document.getElementsByTagName('label');
+	for (var i = labels.length - 1; i >= 0; i--) {
+		if (!labels[i].getAttribute('for')) continue;
+		labels[i].onclick=function () {
+			var id=this.getAttribute('for');
+			if (!document.getElementById(id)) return false;
+			var element =document.getElementById(id);
+			element.foucs();
+		}
+	}
+}
+addLoadEvent(focusLabels);
+function resetFields(whichform) {
+	if (Modernizr.input.placeholder) return;
+	for (var i = whichform.length - 1; i >= 0; i--) {
+		var element=whichform.elements[i];
+		if (element.type=="submit") continue;
+		var check=element.placeholder||element.getAttribute('placeholder');
+		if(!check) continue;
+		element.onfocus=function () {
+			var text=this.placeholder||this.getAttribute('placeholder');
+			if (this.value==text) {
+				this.className='';
+				this.value='';
+			}
+		}
+		element.onblur=function () {
+			if(this.value==""){
+				this.className='placeholder';
+				this.value=this.placeholder||this.getAttribute('placeholder');
+			}
+		}
+		element.onblur();
+	}
+}
+function prepareForms() {
+	for (var i = document.form.length - 1; i >= 0; i--) {
+		var thisform=document.form[i];
+		resetFields(thisform);
+	}
+}
+addLoadEvent(prepareForms)
