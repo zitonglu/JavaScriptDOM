@@ -88,6 +88,11 @@ article img{
 	left: 0;
 	z-index: 99;
 }
+/*photos*/
 #imagegallery li{
 	display:inline;
+}
+/*live*/
+td{
+	padding: .5em 3em;
 }
