@@ -20,8 +20,24 @@
 		</nav>
 	</header>
 	<article>
-		<h1>Lorem Ipsum Dolor</h1>
-		<p id="inteo">It has long been a <a href="about.html" title="about">Philharmonic</a> tradition at the New Year to present a program consisting of the lively and at the same time nostalgic music from the vast repertoire of the Johann Strauss <a href="photo.html" title="photo">family</a> and its contemporaries. These concerts not only delight the audiences in the <a href="live.html" title="Tour Date">Musikverein</a> in Vienna, but also enjoy great international popularity through the world wide television broadcasts, which now reach over <a href="contact.html" title="Contact">50</a> countries. </p>
+		<h1>contact the band</h1>
+		<form action="submit.html" method="post">
+			<fieldset>
+				<p>
+					<label for="name">Name:</label>
+					<input type="text" id="name" name="name" placeholder="Your Name" required="required">
+				</p>
+				<p>
+					<label for="email">Email:</label>
+					<input type="email" id="email" name="email" placeholder="Your Email Address" required="required">
+				</p>
+				<p>
+					<label for="message">Message:</label>
+					<textarea cols="45" rows="7" id="messages" name="message" required="required" placeholder="Write your message here"></textarea>
+				</p>
+				<input type="submit" value="Send">
+			</fieldset>
+		</form>
 	</article>
 	<script src="scripts/global.js"></script>
 </body>
