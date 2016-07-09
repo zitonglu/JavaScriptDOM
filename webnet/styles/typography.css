@@ -33,3 +33,9 @@ h3{
 #imagegallery li{
 	list-style-type: none;
 }
+dt{
+	margin-right: 1em;
+}
+dd{
+	margin-right: 3em;
+}
