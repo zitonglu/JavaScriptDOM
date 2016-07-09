@@ -346,9 +346,31 @@ function resetFields(whichform) {
 	}
 }
 function prepareForms() {
-	for (var i = document.form.length - 1; i >= 0; i--) {
-		var thisform=document.form[i];
+	for (var i = document.forms.length - 1; i >= 0; i--) {
+		var thisform=document.forms[i];
 		resetFields(thisform);
+		thisform.onsubmit=function () {
+			return validateForm(this);
+		}
 	}
 }
-addLoadEvent(prepareForms)
+addLoadEvent(prepareForms);
+
+function validateForm(whichform) {
+	for (var i = whichform.elements.length - 1; i >= 0; i--) {
+		var element=whichform.elements[i];
+		if (element.required=='required') {
+			if (!isFilled(element)) {
+				alert('Please Fill in the'+element.name+'field.');
+				return false;
+			}
+		}
+		if (element.type=='emall') {
+			if (!isEmail(element)) {
+				alert('The'+element.name+'field must be a valid email address.');
+				return false;
+			}
+		}
+	}
+	return true;
+}
